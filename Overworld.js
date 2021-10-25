@@ -12,40 +12,22 @@ class Overworld {
         };
         image.src = "/images/maps/DemoLower.png";
 
-        const x = 5;
-        const y = 6;
+        //Place some Game Objects
+        const hero = new GameObject({
+            x: 5,
+            y: 6,
+        });
 
-        const shadow = new Image();
-        shadow.onload = () => {
-            this.ctx.drawImage(
-                shadow, 
-                0, // начало отрезка слева
-                0, // начало отрезка сверху
-                32, // конец отрезка слева
-                32, // конец отрезка сверху
-                x * 16 - 8, // координата на холсте по иксу
-                y * 16 - 18, // координата на холсте по игрику
-                32, // ширина отрезка
-                32, // высота отрезка
-            );
-        }
-        shadow.src = "/images/characters/shadow.png";
+        const npc1 = new GameObject({
+            x: 6,
+            y: 8,
+            src: "/images/characters/people/npc1.png",
+        });
 
-        const hero = new Image();
-        hero.onload = () => {
-            this.ctx.drawImage(
-                hero, 
-                0, // начало отрезка слева
-                0, // начало отрезка сверху
-                32, // конец отрезка слева
-                32, // конец отрезка сверху
-                x * 16 - 8, // координата на холсте по иксу
-                y * 16 - 18, // координата на холсте по игрику
-                32, // ширина отрезка
-                32, // высота отрезка
-            );
-        }
-        hero.src = "/images/characters/people/hero.png";
+        setTimeout(() => {
+            hero.sprite.draw(this.ctx);
+            npc1.sprite.draw(this.ctx);
+        }, 200)
     }
 
 }
